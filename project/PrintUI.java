@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PrintUI {
+	Scanner scanner = new Scanner(System.in);
+
 	protected String printMonth() {
-		Scanner scanner = new Scanner(System.in);
 		String month = "";
 
 		while (true) {
@@ -25,7 +26,6 @@ public class PrintUI {
 	}
 
 	protected String printTowns() {
-		Scanner scanner = new Scanner(System.in);
 		ArrayList<String> fullTowns1 = new ArrayList<>();
 		ArrayList<String> fullTowns2 = new ArrayList<>();
 
@@ -51,18 +51,33 @@ public class PrintUI {
 			if (num == 1) {
 				System.out.println(fullTowns1);
 				System.out.println(count1);
-				
+
 				System.out.println("원하는 행정구역의 번호를 선택하세요.(해당 번호는 아래 위치한 번호입니다.)");
 				return ary1[scanner.nextInt()];
 			} else if (num == 2) {
 				System.out.println(fullTowns2);
 				System.out.println(count2);
-				
+
 				System.out.println("원하는 행정구역의 번호를 선택하세요.(해당 번호는 아래 위치한 번호입니다.)");
 				return ary2[scanner.nextInt()];
 			} else {
 				System.out.println("Out of order. Error. chose one more!");
 			}
+		}
+	}
+
+	protected String printGAndY() {
+		while (true) {
+			System.out.print("성별을 입력하세요(M - 남성 / W - 여성) : ");
+			String gender = scanner.next().toUpperCase();
+
+			if (gender.equals("W")) {
+				System.out.print("나이를 입력하세요 : ");
+				return (scanner.nextInt() / 10) + "0대여성";
+			} else if (gender.equals("M")) {
+				System.out.print("나이를 입력하세요 : ");
+				return (scanner.nextInt() / 10) + "0대남성";
+			} else System.out.println("\n다시 입력하세요.");
 		}
 	}
 }

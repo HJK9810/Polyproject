@@ -12,21 +12,15 @@ public class checkpop {
 		Scanner scanner = new Scanner(System.in);
 		floatpop fp = new floatpop();
 		PrintUI ui = new PrintUI();
+
 		fp.ReWritecsv();
-		
-		String month = ui.printMonth();
-		String towns = ui.printTowns();
-		
+		System.out.println();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\시군유동인구.txt"));
 			String line;
 			
 			while((line = br.readLine()) != null) {
-				String[] ary = line.split(",");
-				
-				if(ary[0].equals(month) && ary[1].contains(towns)) {
-					System.out.println(line);
-				}
+				System.out.println(line);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
