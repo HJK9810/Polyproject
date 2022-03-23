@@ -85,16 +85,23 @@ public class PrintUI {
 		}
 	}
 	
-	protected int sorted() {
+	protected String printsortedTowns() {
+		floatpop fp = new floatpop();
+		ArrayList<String> towns = fp.maintowns;
+		
 		while(true) {
-			System.out.println("어떤 정렬을 사용하겠습니까?");
-			System.out.println("1. 내림차순\n2. 오름차순");
-			int num = scanner.nextInt();
+			System.out.println("이하의 행정구역중 원하는 시군의 번호를 선택하세요.(0을 입력할 경우, 전체를 출력합니다.)");
+			System.out.println(towns);
+			System.out.print("[0\t, ");
+			for(int i = 1; i < towns.size() - 1; i++) {
+				System.out.print(i + "   , ");
+			}
+			System.out.println((towns.size() - 1) + "\t]");
 			
-			if(num != 1 || num != 2) {
-				System.out.println("다시 입력하세요.");
-				continue;
-			} else return num;
+			int num = scanner.nextInt();
+			if(num < 0 || num > towns.size() - 1) System.out.println("음수는 해당하지 않습니다. 양수를 입력해주세요.");
+			else if (num < towns.size()) return towns.get(num);
+			else return "all";
 		}
 	}
 }

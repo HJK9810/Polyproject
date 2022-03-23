@@ -9,30 +9,33 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class floatpop {
+	protected static HashMap<String, String[]> list = new HashMap<>();
+	protected static ArrayList<String> maintowns = new ArrayList<>();
+	protected static String homeTown = "";
 
 	public static void ReWritecsv() throws IOException {
-		FileWriter fw = new FileWriter("C:\\javatest\\시군유동인구.txt", false);
 		PrintUI pui = new PrintUI();
 		String month = pui.printMonth();
 		String towns = pui.printTowns();
 		String yandg = pui.printGAndY();
-		
+		FileWriter fw = new FileWriter("C:\\javatest\\" + month + "월" + towns + "시군유동인구.txt", false);
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\시군별유동인구데이터.csv"));
 			String line;
 			int idx = -1;
-			HashMap<String, String[]> list = new HashMap<>();
+
 			HashMap<String, Float> sorted = new HashMap<>();
-			
+
 			String start = "";
 
 			while ((line = br.readLine()) != null) {
 				// date, incode, in, outcode, out, man 10~70, woman 10~70
 				String[] ary = line.split(",");
-				
+
 				if (ary[0].equals("년월")) {
-					for(int i=0;i<ary.length;i++) {
-						if(ary[i].contains(yandg)) {
+					for (int i = 0; i < ary.length; i++) {
+						if (ary[i].contains(yandg)) {
 							idx = i;
 							break;
 						}
@@ -45,18 +48,32 @@ public class floatpop {
 				if (!month.equals(ary[0].replace(" ", "").substring(4))) continue;
 
 				if (!ary[1].equals(ary[3]) && ary[2].contains(towns)) {
-					if(ary[2].equals(start)) {
+					if (ary[2].equals(start)) {
 						sorted.put(ary[4], Float.parseFloat(ary[idx]));
 					} else {
 						List<Map.Entry<String, Float>> entries = new ArrayList<>(sorted.entrySet());
-						Collections.sort(entries, Comparator.comparing(Map.Entry::getValue));
-						List<String> changelist = changeList(entries);
-						String[] arr = new String[changelist.size()];
-												
-						list.put(start, arr);
+						entries.sort(Map.Entry.comparingByValue());
+						ArrayList<String> changeList = new ArrayList<>();
+						
+						for(Map.Entry<String, Float> entry : entries) {
+							changeList.add(entry.getKey() + "-" + entry.getValue());
+						}
+						String[] arr = changeList.toArray(new String[changeList.size()]);
+						
+						
+						String[] tstart = start.split(" ");
+						
+						if(tstart.length == 1) {
+							list.put(start, arr);
+							maintowns.add(start);
+						} else {
+							homeTown = tstart[0];
+							list.put(tstart[1], arr);
+							maintowns.add(tstart[1]);
+						}
 						start = ary[2];
 					}
-						
+
 					String str = month + "월," + ary[2] + "," + ary[4] + ", " + ary[idx];
 					fw.write(str + "\n");
 				}
@@ -68,15 +85,5 @@ public class floatpop {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static List<String> changeList(List<Map.Entry<String, Float>> map) {
-		List<String> list = new ArrayList<>();
-		
-		for(Map.Entry<String, Float> entry : map) {
-			list.add(entry.getKey() +  "-" + entry.getValue());
-		}
-		
-		return list;
 	}
 }
