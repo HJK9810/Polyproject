@@ -99,9 +99,9 @@ public class PrintUI {
 			System.out.println((towns.size() - 1) + "\t]");
 			
 			int num = scanner.nextInt();
-			if(num < 0 || num > towns.size() - 1) System.out.println("음수는 해당하지 않습니다. 양수를 입력해주세요.");
+			if(num == 0) return "all";
 			else if (num < towns.size()) return towns.get(num);
-			else return "all";
+			else System.out.println("해당하지 않습니다. 범위내의 수를 입력해주세요.");
 		}
 	}
 }
