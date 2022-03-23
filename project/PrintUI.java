@@ -90,9 +90,9 @@ public class PrintUI {
 		ArrayList<String> towns = fp.maintowns;
 		
 		while(true) {
-			System.out.println("이하의 행정구역중 원하는 시군의 번호를 선택하세요.");
+			System.out.println("이하의 행정구역중 원하는 시군의 번호를 선택하세요.(전체를 원할경우 0을 선택하세요.)");
 			System.out.println(towns);
-			System.out.print("[");
+			System.out.print("[0\t, ");
 			for(int i = 1; i < towns.size() - 1; i++) {
 				System.out.print(i + "   , ");
 			}

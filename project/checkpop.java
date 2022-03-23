@@ -38,6 +38,9 @@ public class checkpop {
 					System.out.println(maxarr[0] + ":" + maxarr[1] + "\t\t " + minarr[0] + ":" + minarr[1]);
 				}
 			}
+		} else {
+			checkAll cA = new checkAll();
+			cA.printAll();
 		}
 	}
 }
