@@ -61,14 +61,15 @@ public class floatpop {
 							list.put(start, arr);
 							maintowns.add(start);
 						} else {
+							if(!list.containsKey(tstart[1])) maintowns.add(tstart[1]);
 							list.put(tstart[1], arr);
-							maintowns.add(tstart[1]);
 						}
 						
 						start = ary[2];
+						tstart = start.split(" ");
 						
-						if(list.containsKey(start)) { // if same towns?
-							String[] array = list.get(start);
+						if(tstart.length != 1 && list.containsKey(tstart[1])) { // if same towns?
+							String[] array = list.get(tstart[1]);
 							sorted = new HashMap<>();
 							
 							for (String str : array) {
