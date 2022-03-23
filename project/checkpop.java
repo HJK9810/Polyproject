@@ -33,9 +33,9 @@ public class checkpop {
 				String[] maxarr = ary[ary.length - 1 - i].split("-");
 				String[] minarr = ary[i].split("-");
 				if(maxarr[0].length() > minarr[0].length()) {
-					System.out.println(maxarr[0] + ":" + maxarr[1] + "\t " + minarr[0] + ":" + minarr[1]);
+					System.out.println((i + 1) + ". " + maxarr[0] + ":" + maxarr[1] + "\t " + minarr[0] + ":" + minarr[1]);
 				} else {
-					System.out.println(maxarr[0] + ":" + maxarr[1] + "\t\t " + minarr[0] + ":" + minarr[1]);
+					System.out.println((i + 1) + ". " + maxarr[0] + ":" + maxarr[1] + "\t\t " + minarr[0] + ":" + minarr[1]);
 				}
 			}
 		} else {
