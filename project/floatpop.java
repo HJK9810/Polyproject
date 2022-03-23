@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
 	protected static ArrayList<String> maintowns = new ArrayList<>();
+	protected static String path = "";
 
 	public void ReWritecsv() throws IOException {
 		PrintUI pui = new PrintUI();
@@ -19,7 +20,8 @@ public class floatpop {
 		String towns = pui.printTowns();
 		String yandg = pui.printGAndY();
 		// for rewrite
-		FileWriter fw = new FileWriter("C:\\javatest\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv", false);
+		path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";
+		FileWriter fw = new FileWriter(path, false);
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\시군별유동인구데이터.csv"));
