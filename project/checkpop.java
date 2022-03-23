@@ -19,7 +19,6 @@ public class checkpop {
 
 		ArrayList<String> maintowns = fp.maintowns;
 		HashMap<String, String[]> list = fp.list;
-//		String homeTown = fp.homeTown;
 
 		if (town != "all") {
 			String key = town;
@@ -28,12 +27,12 @@ public class checkpop {
 			if (leng > 5) leng = 5;
 
 			System.out.println(town + "에서의 유동인구 top5와 worst5");
-			System.out.println("Max\t\tMin");
+			System.out.println("Top\t\t\tworst");
 
 			for (int i = 1; i < leng + 1; i++) { // if min == 0.0?
 				String[] maxarr = ary[ary.length - i].split("-");
 				String[] minarr = ary[i].split("-");
-				System.out.println(maxarr[0] + ":" + maxarr[1] + "\t" + minarr[0] + ":" + minarr[1]);
+				System.out.println(maxarr[0] + ":" + maxarr[1] + "\t " + minarr[0] + ":" + minarr[1]);
 			}
 		}
 	}
