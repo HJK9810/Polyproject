@@ -41,7 +41,7 @@ public class checkAll {
 		System.out.println("전체에서의 유동인구");
 		System.out.println("Top 10");
 		for (int i = 0; i < 10; i++) {
-			int listsize = townlist.size();
+			int listsize = townlist.size() - 1;
 			String[] ary = townlist.get(listsize - i).split("-");
 			System.out.println(ary[0] + "에서 " + ary[1] + ":" + ary[2]);
 		}
