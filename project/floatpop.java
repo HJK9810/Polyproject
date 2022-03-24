@@ -12,6 +12,7 @@ public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
 	protected static ArrayList<String> maintowns = new ArrayList<>();
 	protected static String path = "";
+	protected static HashMap<String, Float> Alltowns = new HashMap<>();
 
 	public void ReWritecsv() throws IOException {
 		PrintUI pui = new PrintUI();
@@ -21,7 +22,7 @@ public class floatpop {
 		String yandg = pui.printGAndY();
 		// for rewrite
 		path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";
-		FileWriter fw = new FileWriter(path, false);
+		FileWriter fw = new FileWriter(fp.path, false);
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\시군별유동인구데이터.csv"));
@@ -51,7 +52,7 @@ public class floatpop {
 				if (!month.equals(ary[0].replace(" ", "").substring(4))) continue;
 
 				// check which want to from big cities && not same town to same town
-				if (ary[2].contains(towns) && !ary[1].equals(ary[3])) { 
+				if (ary[2].contains(towns) && !ary[1].equals(ary[3])) {
 					if (ary[2].equals(start)) {
 						sorted.put(ary[4], Float.parseFloat(ary[idx]));
 					} else {
@@ -84,7 +85,8 @@ public class floatpop {
 
 						sorted.put(ary[4], Float.parseFloat(ary[idx]));
 					}
-
+					
+					Alltowns.put(ary[2] + "-" + ary[4], Float.parseFloat(ary[idx]));
 					String str = month + "월," + ary[2] + "," + ary[4] + ", " + ary[idx];
 					fw.write(str + "\n");
 				}

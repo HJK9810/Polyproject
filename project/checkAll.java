@@ -1,9 +1,5 @@
 package project;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,32 +11,12 @@ public class checkAll {
 		Scanner scanner = new Scanner(System.in);
 		floatpop fp = new floatpop();
 		checkAll cA = new checkAll();
-		String path = fp.path;
 
-		HashMap<String, Float> towns = new HashMap<>();
-
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(path));
-			String line;
-			while ((line = br.readLine()) != null) {
-				String[] ary = line.split(",");
-				if (ary[0].equals("년월"))
-					continue;
-
-				String str = ary[1] + "-" + ary[2];
-				towns.put(str, Float.parseFloat(ary[3]));
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HashMap<String, Float> towns = fp.Alltowns;
 
 		ArrayList<String> townlist = cA.compare(towns);
 
-		System.out.println("If print worst, do you want to delet 0.0?(Yes input >0, No input <= 0)");
+		System.out.println("If print worst, do you want to delet 0.0?(Yes input > 0, No input <= 0)");
 		int num = scanner.nextInt();
 		System.out.println("\n전체에서의 유동인구");
 		System.out.println("Top 10");
@@ -69,7 +45,7 @@ public class checkAll {
 					System.out.println((i + 1 - j) + ". " + ary[0] + " 에서 " + ary[1] + ":" + ary[2]);
 				}
 			}
-			System.out.println("\nThey are 0.0 cities : " + zeros.size());
+			System.out.println("\nThey are \"0.0\" cities : " + zeros.size());
 			for(String str : zeros) {
 				System.out.println(str);
 			}
