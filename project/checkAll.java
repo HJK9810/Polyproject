@@ -30,7 +30,7 @@ public class checkAll {
 		if (num <= 0) {
 			for (int i = 0; i < 10; i++) {
 				String[] ary = townlist.get(i).split("-");
-				System.out.println((i + 1) + ". " + ary[0] + " 에서 " + ary[1] + ":" + ary[2]);
+				System.out.println((i + 1) + ". \'" + ary[0] + "\' 에서 \'" + ary[1] + "\' : " + ary[2]);
 			}
 		} else {
 			int j = 0;
@@ -38,11 +38,11 @@ public class checkAll {
 			for (int i = 0; i < 10 + j; i++) {
 				String[] ary = townlist.get(i + j).split("-");
 				if (ary[2].equals("0.0")) {
-					zeros.add(ary[0] + " 에서 " + ary[1]);
+					zeros.add("\'" + ary[0] + "\' 에서 \'" + ary[1] +"\'");
 					j++;
 				} else {
 					if(i == townlist.size() - 1) break;
-					System.out.println((i + 1 - j) + ". " + ary[0] + " 에서 " + ary[1] + ":" + ary[2]);
+					System.out.println((i + 1 - j) + ". \'" + ary[0] + "\' 에서 \'" + ary[1] + "\' : " + ary[2]);
 				}
 			}
 			System.out.println("\nThey are \"0.0\" cities : " + zeros.size());
