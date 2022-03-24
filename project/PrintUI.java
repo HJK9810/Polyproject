@@ -87,7 +87,7 @@ public class PrintUI {
 	
 	protected String printsortedTowns() {
 		floatpop fp = new floatpop();
-		ArrayList<String> towns = fp.maintowns;
+		ArrayList<String> towns = new ArrayList<>(fp.maintowns);
 		
 		while(true) {
 			System.out.println("이하의 행정구역중 원하는 시군의 번호를 선택하세요.(전체를 원할경우 0을 선택하세요.)");

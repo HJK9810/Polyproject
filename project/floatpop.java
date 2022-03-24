@@ -9,7 +9,7 @@ import java.util.*;
 
 public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
-	protected static ArrayList<String> maintowns = new ArrayList<>();
+	protected static LinkedHashSet<String> maintowns = new LinkedHashSet<>(); // for without duplication
 	protected static HashMap<String, Float> Alltowns = new HashMap<>();
 
 	public void ReWritecsv() throws IOException {
@@ -62,8 +62,7 @@ public class floatpop {
 							list.put(start, arr);
 							maintowns.add(start);
 						} else { // maintown is for big town's small towns(½Ã±º)
-							// for without duplication
-							if(!list.containsKey(tstart[1])) maintowns.add(tstart[1]); 
+							maintowns.add(tstart[1]); 
 							list.put(tstart[1], arr);
 						}
 						
