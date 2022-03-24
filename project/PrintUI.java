@@ -74,44 +74,44 @@ public class PrintUI {
 			if (gender.equals("W")) {
 				System.out.print("나이를 입력하세요 : ");
 				int num = scanner.nextInt();
-				if(num / 10 < 1) continue;
+				if (num / 10 < 1) continue;
 				return (num / 10) + "0대여성";
 			} else if (gender.equals("M")) {
 				System.out.print("나이를 입력하세요 : ");
 				int num = scanner.nextInt();
-				if(num / 10 < 1) continue;
+				if (num / 10 < 1) continue;
 				return (num / 10) + "0대남성";
 			} else System.out.println("다시 입력하세요.");
 		}
 	}
-	
+
 	protected String printsortedTowns() {
 		floatpop fp = new floatpop();
 		ArrayList<String> towns = new ArrayList<>(fp.maintowns);
-		
-		while(true) {
+
+		while (true) {
 			System.out.println("이하의 행정구역중 원하는 시군의 번호를 선택하세요.(전체를 원할경우 0을 선택하세요.)");
 			System.out.println(towns);
 			System.out.print("[0\t, ");
-			for(int i = 1; i < towns.size() - 1; i++) {
+			for (int i = 1; i < towns.size() - 1; i++) {
 				System.out.print(i + "   , ");
 			}
 			System.out.println((towns.size() - 1) + "\t]");
-			
+
 			int num = scanner.nextInt();
-			if(num == 0) return "all";
+			if (num == 0) return "all";
 			else if (num < towns.size()) return towns.get(num);
 			else System.out.println("해당하지 않습니다. 범위내의 수를 입력해주세요.");
 		}
 	}
-	
+
 	protected void printdistance(String town) {
 		System.out.println("\n해당 도시들의 거리를 보시겠습니까?");
 		System.out.println("Please in put 1 or 0 => yes = 1, no = 0");
-		
-		while(true) {
+
+		while (true) {
 			int num = scanner.nextInt();
-			if(num == 1) {
+			if (num == 1) {
 				Crawldist cd = new Crawldist(town);
 				cd.checkdistance();
 				break;

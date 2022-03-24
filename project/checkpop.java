@@ -33,15 +33,15 @@ public class checkpop {
 				String[] maxarr = ary[ary.length - 1 - i].split("-");
 				String[] minarr = ary[i].split("-");
 				System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t " + (i + 1) + ". " + minarr[0] + " : " + minarr[1]);
-				
-				top5.add(bigtown + " " + town + "-" + maxarr[0]);
-				worst5.add(bigtown + " " + town + "-" + minarr[0]);
+
+				top5.add(bigtown + " " + town + "에서 " + maxarr[0] + " 거리");
+				worst5.add(bigtown + " " + town + "에서 " + minarr[0] + " 거리");
 			}
 		} else {
 			checkAll cA = new checkAll();
 			cA.printAll();
 		}
-		
+
 		pui.printdistance(town);
 	}
 }

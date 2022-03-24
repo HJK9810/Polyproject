@@ -63,17 +63,17 @@ public class floatpop {
 							list.put(start, arr);
 							maintowns.add(start);
 						} else { // maintown is for big town's small towns(½Ã±º)
-							maintowns.add(tstart[1]); 
+							maintowns.add(tstart[1]);
 							list.put(tstart[1], arr);
 						}
-						
+
 						start = ary[2];
 						tstart = start.split(" ");
-						
+
 						sorted = new HashMap<>(); // hashmap initialization
-						if(tstart.length != 1 && list.containsKey(tstart[1])) { // if same towns?
+						if (tstart.length != 1 && list.containsKey(tstart[1])) { // if same towns?
 							String[] array = list.get(tstart[1]);
-							
+
 							for (String str : array) {
 								String[] formap = str.split("-");
 								sorted.put(formap[0].trim(), Float.parseFloat(formap[1].trim()));

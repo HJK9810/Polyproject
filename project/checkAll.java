@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class checkAll {
 	protected ArrayList<String> top10 = new ArrayList<>();
 	protected ArrayList<String> worst10 = new ArrayList<>();
-	
+
 	public void printAll() {
 		Scanner scanner = new Scanner(System.in);
 		floatpop fp = new floatpop();
@@ -27,7 +27,7 @@ public class checkAll {
 			int listsize = townlist.size() - 1;
 			String[] ary = townlist.get(listsize - i).split("-");
 			System.out.println((i + 1) + ". \'" + ary[0] + "\' 에서 \'" + ary[1] + "\' : " + ary[2]);
-			cA.top10.add(ary[0] + "-" + ary[1]);
+			cA.top10.add(ary[0] + "에서 " + ary[1] + " 거리");
 		}
 
 		System.out.println("\nWorts 10");
@@ -42,16 +42,16 @@ public class checkAll {
 			for (int i = 0; i < 10 + j; i++) {
 				String[] ary = townlist.get(i + j).split("-");
 				if (ary[2].equals("0.0")) {
-					zeros.add("\'" + ary[0] + "\' 에서 \'" + ary[1] +"\'");
+					zeros.add("\'" + ary[0] + "\' 에서 \'" + ary[1] + "\'");
 					j++;
 				} else {
-					if(i == townlist.size() - 1) break;
+					if (i == townlist.size() - 1) break;
 					System.out.println((i + 1 - j) + ". \'" + ary[0] + "\' 에서 \'" + ary[1] + "\' : " + ary[2]);
-					cA.worst10.add(ary[0] + "-" + ary[1]);
+					cA.worst10.add(ary[0] + "에서 " + ary[1] + " 거리");
 				}
 			}
 			System.out.println("\nThey are \"0.0\" cities : " + zeros.size());
-			for(String str : zeros) {
+			for (String str : zeros) {
 				System.out.println(str);
 			}
 		}
