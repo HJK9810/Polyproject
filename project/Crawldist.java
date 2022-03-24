@@ -17,9 +17,9 @@ public class Crawldist {
 	}
 	
 	public void checkdistance() {
-		checkpop cp = new checkpop();
 		checkAll ca = new checkAll();
 		Crawldist cd = new Crawldist(town);
+		PrintSeperTown pst = new PrintSeperTown(town);
 		
 		String DRIVER_ID = "webdriver.chrome.driver";
 		String DRIVER_PATH = "C:\\Crawling\\chromedriver.exe";
@@ -37,8 +37,8 @@ public class Crawldist {
 			ArrayList<String> worst = null;
 			
 			if(!town.equals("all")) {
-				top = cp.top5;
-				worst = cp.worst5;
+				top = pst.top5;
+				worst = pst.worst5;
 			} else {
 				top = ca.top10;
 				worst = ca.worst10;
