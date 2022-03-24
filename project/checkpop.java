@@ -1,13 +1,17 @@
 package project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class checkpop {
+	protected ArrayList<String> top5 = new ArrayList<>();
+	protected ArrayList<String> worst5 = new ArrayList<>();
 
 	public static void main(String[] args) throws IOException {
 		floatpop fp = new floatpop();
 		PrintUI pui = new PrintUI();
+		checkpop cp = new checkpop();
 
 		fp.ReWritecsv();
 		System.out.println();
@@ -27,15 +31,16 @@ public class checkpop {
 			for (int i = 0; i < leng + 1; i++) {
 				String[] maxarr = ary[ary.length - 1 - i].split("-");
 				String[] minarr = ary[i].split("-");
-				if(maxarr[0].length() > minarr[0].length()) {
-					System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t " + minarr[0] + " : " + minarr[1]);
-				} else {
-					System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t\t " + minarr[0] + " : " + minarr[1]);
-				}
+				System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t " + (i + 1) + ". " + minarr[0] + " : " + minarr[1]);
+				
+				cp.top5.add(maxarr[0] + "-" + maxarr[1]);
+				cp.worst5.add(minarr[0] + "-" + minarr[1]);
 			}
 		} else {
 			checkAll cA = new checkAll();
 			cA.printAll();
 		}
+		
+		pui.printdistance(town);
 	}
 }

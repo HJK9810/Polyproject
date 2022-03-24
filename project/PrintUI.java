@@ -104,4 +104,21 @@ public class PrintUI {
 			else System.out.println("해당하지 않습니다. 범위내의 수를 입력해주세요.");
 		}
 	}
+	
+	protected void printdistance(String town) {
+		System.out.println("해당 도시들의 거리를 보시겠습니까?");
+		System.out.println("Please in put 1 or 0 => yes = 1, no = 0");
+		
+		while(true) {
+			int num = scanner.nextInt();
+			if(num == 1) {
+				Crawldist cd = new Crawldist(town);
+			} else if (num == 0) {
+				break;
+			} else {
+				System.out.println("I say just input 1 or 0");
+				System.out.println("Please input one more time.");
+			}
+		}
+	}
 }
