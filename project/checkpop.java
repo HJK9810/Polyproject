@@ -24,7 +24,7 @@ public class checkpop {
 			System.out.println(town + "에서의 유동인구 top5와 worst5");
 			System.out.println("Top\t\t\t\tworst");
 
-			for (int i = 0; i < leng + 1; i++) { // if min == 0.0?
+			for (int i = 0; i < leng + 1; i++) {
 				String[] maxarr = ary[ary.length - 1 - i].split("-");
 				String[] minarr = ary[i].split("-");
 				if(maxarr[0].length() > minarr[0].length()) {

@@ -10,7 +10,6 @@ import java.util.*;
 public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
 	protected static ArrayList<String> maintowns = new ArrayList<>();
-	protected static String path = "";
 	protected static HashMap<String, Float> Alltowns = new HashMap<>();
 
 	public void ReWritecsv() throws IOException {
@@ -20,7 +19,7 @@ public class floatpop {
 		String towns = pui.printTowns();
 		String yandg = pui.printGAndY();
 		// for rewrite
-		path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";
+		String path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";
 		FileWriter fw = new FileWriter(path, false);
 
 		try {
@@ -57,34 +56,33 @@ public class floatpop {
 					} else {
 						String[] arr = fp.mapsorted(sorted);
 
-						String[] tstart = start.split(" ");
+						String[] tstart = start.split(" "); // start = bigtown+ " " +smalltown
 
 						if (tstart.length == 1) { // for the first line
 							list.put(start, arr);
 							maintowns.add(start);
-						} else {
-							if(!list.containsKey(tstart[1])) maintowns.add(tstart[1]);
+						} else { // maintown is for big town's small towns(시군)
+							// for without duplication
+							if(!list.containsKey(tstart[1])) maintowns.add(tstart[1]); 
 							list.put(tstart[1], arr);
 						}
 						
 						start = ary[2];
 						tstart = start.split(" ");
 						
+						sorted = new HashMap<>(); // hashmap initialization
 						if(tstart.length != 1 && list.containsKey(tstart[1])) { // if same towns?
 							String[] array = list.get(tstart[1]);
-							sorted = new HashMap<>();
 							
 							for (String str : array) {
 								String[] formap = str.split("-");
 								sorted.put(formap[0].trim(), Float.parseFloat(formap[1].trim()));
 							}
-						} else {
-							sorted = new HashMap<>();
 						}
 
 						sorted.put(ary[4], Float.parseFloat(ary[idx]));
 					}
-					
+					// alltowns key = from-arrive
 					Alltowns.put(ary[2] + "-" + ary[4], Float.parseFloat(ary[idx]));
 					String str = month + "월," + ary[2] + "," + ary[4] + ", " + ary[idx];
 					fw.write(str + "\n");
