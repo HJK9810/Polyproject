@@ -11,12 +11,13 @@ public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
 	protected static LinkedHashSet<String> maintowns = new LinkedHashSet<>(); // for without duplication
 	protected static HashMap<String, Float> Alltowns = new HashMap<>();
+	protected static String towns = "";
 
 	public void ReWritecsv() throws IOException {
 		PrintUI pui = new PrintUI();
 		floatpop fp = new floatpop();
 		String month = pui.printMonth();
-		String towns = pui.printTowns();
+		towns = pui.printTowns();
 		String yandg = pui.printGAndY();
 		// for rewrite
 		String path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";

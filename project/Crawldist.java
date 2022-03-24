@@ -25,20 +25,19 @@ public class Crawldist {
 		String DRIVER_PATH = "C:\\Crawling\\chromedriver.exe";
 
 		System.setProperty(DRIVER_ID, DRIVER_PATH);
-//		ChromeOptions chromeOptions = new ChromeOptions();
-//		chromeOptions.addArguments("--headless");
-//		chromeOptions.addArguments("--no-sandbox");
-//		WebDriver driver = new ChromeDriver(chromeOptions);
-		WebDriver driver = new ChromeDriver();
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--no-sandbox");
+		WebDriver driver = new ChromeDriver(chromeOptions);
+//		WebDriver driver = new ChromeDriver();
 
 		try {
-			// 접속
 			driver.get("https://www.google.co.kr/");
 			
-			ArrayList<String> top;
-			ArrayList<String> worst;
+			ArrayList<String> top = null;
+			ArrayList<String> worst = null;
 			
-			if(town != "all") {
+			if(!town.equals("all")) {
 				top = cp.top5;
 				worst = cp.worst5;
 			} else {
@@ -46,9 +45,10 @@ public class Crawldist {
 				worst = ca.worst10;
 			}
 			
-			System.out.println("Print tops' distances list");
+			System.out.println("\nPrint tops' distances list");
 			cd.findDistance(top, town, driver);
-			System.out.println("Print worsts' distances list");
+
+			System.out.println("\nPrint worsts' distances list");
 			cd.findDistance(worst, town, driver);
 			
 			driver.quit();
@@ -61,11 +61,11 @@ public class Crawldist {
 	protected void findDistance(ArrayList<String> list, String town, WebDriver driver) {
 		driver.get("https://www.google.co.kr/");
 		
-		for (String line : list) {
-			String[] ary = line.split("-");
+		for (int i = 0; i < list.size(); i++) {
+			String[] ary = list.get(i).split("-");
 			String search = "";
 			
-			if(!town.equals("all")) search = town + " " + ary[0] + "에서 " + ary[1] + " 거리";
+			if(!town.equals("all")) search = ary[0] + "에서 " + ary[1] + " 거리";
 			else search = ary[0] + "에서 " + ary[1] + " 거리";
 			
 			WebElement web1 = driver

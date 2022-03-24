@@ -106,13 +106,15 @@ public class PrintUI {
 	}
 	
 	protected void printdistance(String town) {
-		System.out.println("해당 도시들의 거리를 보시겠습니까?");
+		System.out.println("\n해당 도시들의 거리를 보시겠습니까?");
 		System.out.println("Please in put 1 or 0 => yes = 1, no = 0");
 		
 		while(true) {
 			int num = scanner.nextInt();
 			if(num == 1) {
 				Crawldist cd = new Crawldist(town);
+				cd.checkdistance();
+				break;
 			} else if (num == 0) {
 				break;
 			} else {

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class checkpop {
-	protected ArrayList<String> top5 = new ArrayList<>();
-	protected ArrayList<String> worst5 = new ArrayList<>();
+	protected static ArrayList<String> top5 = new ArrayList<>();
+	protected static ArrayList<String> worst5 = new ArrayList<>();
 
 	public static void main(String[] args) throws IOException {
 		floatpop fp = new floatpop();
@@ -16,10 +16,11 @@ public class checkpop {
 		fp.ReWritecsv();
 		System.out.println();
 		String town = pui.printsortedTowns();
+		String bigtown = fp.towns;
 
 		HashMap<String, String[]> list = fp.list;
 
-		if (town != "all") {
+		if (!town.equals("all")) {
 			String key = town;
 			String[] ary = list.get(key);
 			int leng = ary.length;
@@ -28,13 +29,13 @@ public class checkpop {
 			System.out.println(town + "에서의 유동인구 top5와 worst5");
 			System.out.println("Top\t\t\t\tworst");
 
-			for (int i = 0; i < leng + 1; i++) {
+			for (int i = 0; i < leng; i++) {
 				String[] maxarr = ary[ary.length - 1 - i].split("-");
 				String[] minarr = ary[i].split("-");
 				System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t " + (i + 1) + ". " + minarr[0] + " : " + minarr[1]);
 				
-				cp.top5.add(maxarr[0] + "-" + maxarr[1]);
-				cp.worst5.add(minarr[0] + "-" + minarr[1]);
+				top5.add(bigtown + " " + town + "-" + maxarr[0]);
+				worst5.add(bigtown + " " + town + "-" + minarr[0]);
 			}
 		} else {
 			checkAll cA = new checkAll();
