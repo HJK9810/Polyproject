@@ -1,15 +1,11 @@
 package project;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
 
 public class checkpop {
 
 	public static void main(String[] args) throws IOException {
-		Scanner scanner = new Scanner(System.in);
 		floatpop fp = new floatpop();
 		PrintUI pui = new PrintUI();
 
@@ -17,7 +13,6 @@ public class checkpop {
 		System.out.println();
 		String town = pui.printsortedTowns();
 
-		ArrayList<String> maintowns = fp.maintowns;
 		HashMap<String, String[]> list = fp.list;
 
 		if (town != "all") {

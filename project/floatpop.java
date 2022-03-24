@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.Map.Entry;
 
 public class floatpop {
 	protected static HashMap<String, String[]> list = new HashMap<>();
@@ -22,7 +21,7 @@ public class floatpop {
 		String yandg = pui.printGAndY();
 		// for rewrite
 		path = "C:\\javatest\\유동인구\\" + month + "월" + towns + "시군" + yandg + "대유동인구.csv";
-		FileWriter fw = new FileWriter(fp.path, false);
+		FileWriter fw = new FileWriter(path, false);
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\시군별유동인구데이터.csv"));
