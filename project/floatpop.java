@@ -20,11 +20,11 @@ public class floatpop {
 		towns = pui.printTowns();
 		String yandg = pui.printGAndY();
 		// for rewrite
-		String path = "C:\\javatest\\À¯µ¿ÀÎ±¸\\" + month + "¿ù" + towns + "½Ã±º" + yandg + "´ëÀ¯µ¿ÀÎ±¸.csv";
+		String path = "C:\\javatest\\ìœ ë™ì¸êµ¬\\" + month + "ì›”" + towns + "ì‹œêµ°" + yandg + "ëŒ€ìœ ë™ì¸êµ¬.csv";
 		FileWriter fw = new FileWriter(path, false);
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\½Ã±ºº°À¯µ¿ÀÎ±¸µ¥ÀÌÅÍ.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("C:\\javatest\\ì‹œêµ°ë³„ìœ ë™ì¸êµ¬ë°ì´í„°.csv"));
 			String line;
 			int idx = -1;
 
@@ -36,7 +36,7 @@ public class floatpop {
 				// date, incode, in, outcode, out, man 10~70, woman 10~70
 				String[] ary = line.split(",");
 
-				if (ary[0].equals("³â¿ù")) { // the first line
+				if (ary[0].equals("ë…„ì›”")) { // the first line
 					for (int i = 0; i < ary.length; i++) {
 						if (ary[i].contains(yandg)) { // check index which want to check age
 							idx = i;
@@ -62,7 +62,7 @@ public class floatpop {
 						if (tstart.length == 1) { // for the first line
 							list.put(start, arr);
 							maintowns.add(start);
-						} else { // maintown is for big town's small towns(½Ã±º)
+						} else { // maintown is for big town's small towns(ì‹œêµ°)
 							maintowns.add(tstart[1]);
 							list.put(tstart[1], arr);
 						}
@@ -84,7 +84,7 @@ public class floatpop {
 					}
 					// alltowns key = from-arrive
 					Alltowns.put(ary[2] + "-" + ary[4], Float.parseFloat(ary[idx]));
-					String str = month + "¿ù," + ary[2] + "," + ary[4] + ", " + ary[idx];
+					String str = month + "ì›”," + ary[2] + "," + ary[4] + ", " + ary[idx];
 					fw.write(str + "\n");
 				}
 			}

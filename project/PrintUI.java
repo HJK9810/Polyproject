@@ -31,8 +31,8 @@ public class PrintUI {
 
 		ArrayList<String> count1 = new ArrayList<>();
 		ArrayList<String> count2 = new ArrayList<>();
-		String[] ary1 = { "¼­¿ï", "ºÎ»ê", "´ë±¸", "ÀÎÃµ", "±¤ÁÖ", "´ëÀü", "¿ï»ê", "¼¼Á¾" };
-		String[] ary2 = { "°æ±âµµ", "°­¿øµµ", "ÃæÃ»ºÏµµ", "ÃæÃ»³²µµ", "Àü¶óºÏµµ", "Àü¶ó³²µµ", "°æ»óºÏµµ", "°æ»ó³²µµ", "Á¦ÁÖ" };
+		String[] ary1 = { "ì„œìš¸", "ë¶€ì‚°", "ëŒ€êµ¬", "ì¸ì²œ", "ê´‘ì£¼", "ëŒ€ì „", "ìš¸ì‚°", "ì„¸ì¢…" };
+		String[] ary2 = { "ê²½ê¸°ë„", "ê°•ì›ë„", "ì¶©ì²­ë¶ë„", "ì¶©ì²­ë‚¨ë„", "ì „ë¼ë¶ë„", "ì „ë¼ë‚¨ë„", "ê²½ìƒë¶ë„", "ê²½ìƒë‚¨ë„", "ì œì£¼" };
 
 		for (int i = 0; i < ary1.length; i++) {
 			fullTowns1.add(ary1[i] + "\t");
@@ -45,20 +45,20 @@ public class PrintUI {
 
 		int num = 0;
 		while (true) {
-			System.out.println("¿øÇÏ´Â Ãâ¹ßÁö¸¦ ¼±ÅÃÇÏ¼¼¿ä.");
-			System.out.println("1. Æ¯º°ÀÚÄ¡½Ã\n2. µµ");
+			System.out.println("ì›í•˜ëŠ” ì¶œë°œì§€ë¥¼ ì„ íƒí•˜ì„¸ìš”.");
+			System.out.println("1. íŠ¹ë³„ìì¹˜ì‹œ\n2. ë„");
 			num = scanner.nextInt();
 			if (num == 1) {
 				System.out.println(fullTowns1);
 				System.out.println(count1);
 
-				System.out.println("¿øÇÏ´Â ÇàÁ¤±¸¿ªÀÇ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä.(ÇØ´ç ¹øÈ£´Â ¾Æ·¡ À§Ä¡ÇÑ ¹øÈ£ÀÔ´Ï´Ù.)");
+				System.out.println("ì›í•˜ëŠ” í–‰ì •êµ¬ì—­ì˜ ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”.(í•´ë‹¹ ë²ˆí˜¸ëŠ” ì•„ë˜ ìœ„ì¹˜í•œ ë²ˆí˜¸ì…ë‹ˆë‹¤.)");
 				return ary1[scanner.nextInt()];
 			} else if (num == 2) {
 				System.out.println(fullTowns2);
 				System.out.println(count2);
 
-				System.out.println("¿øÇÏ´Â ÇàÁ¤±¸¿ªÀÇ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä.(ÇØ´ç ¹øÈ£´Â ¾Æ·¡ À§Ä¡ÇÑ ¹øÈ£ÀÔ´Ï´Ù.)");
+				System.out.println("ì›í•˜ëŠ” í–‰ì •êµ¬ì—­ì˜ ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”.(í•´ë‹¹ ë²ˆí˜¸ëŠ” ì•„ë˜ ìœ„ì¹˜í•œ ë²ˆí˜¸ì…ë‹ˆë‹¤.)");
 				return ary2[scanner.nextInt()];
 			} else {
 				System.out.println("Out of order. Error. chose one more!");
@@ -68,20 +68,20 @@ public class PrintUI {
 
 	protected String printGAndY() {
 		while (true) {
-			System.out.print("¼ºº°À» ÀÔ·ÂÇÏ¼¼¿ä(M - ³²¼º / W - ¿©¼º) : ");
+			System.out.print("ì„±ë³„ì„ ì…ë ¥í•˜ì„¸ìš”(M - ë‚¨ì„± / W - ì—¬ì„±) : ");
 			String gender = scanner.next().toUpperCase();
 
 			if (gender.equals("W")) {
-				System.out.print("³ªÀÌ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+				System.out.print("ë‚˜ì´ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 				int num = scanner.nextInt();
 				if (num / 10 < 1) continue;
-				return (num / 10) + "0´ë¿©¼º";
+				return (num / 10) + "0ëŒ€ì—¬ì„±";
 			} else if (gender.equals("M")) {
-				System.out.print("³ªÀÌ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+				System.out.print("ë‚˜ì´ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 				int num = scanner.nextInt();
 				if (num / 10 < 1) continue;
-				return (num / 10) + "0´ë³²¼º";
-			} else System.out.println("´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.");
+				return (num / 10) + "0ëŒ€ë‚¨ì„±";
+			} else System.out.println("ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”.");
 		}
 	}
 
@@ -90,7 +90,7 @@ public class PrintUI {
 		ArrayList<String> towns = new ArrayList<>(fp.maintowns);
 
 		while (true) {
-			System.out.println("ÀÌÇÏÀÇ ÇàÁ¤±¸¿ªÁß ¿øÇÏ´Â ½Ã±ºÀÇ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä.(ÀüÃ¼¸¦ ¿øÇÒ°æ¿ì 0À» ¼±ÅÃÇÏ¼¼¿ä.)");
+			System.out.println("ì´í•˜ì˜ í–‰ì •êµ¬ì—­ì¤‘ ì›í•˜ëŠ” ì‹œêµ°ì˜ ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”.(ì „ì²´ë¥¼ ì›í• ê²½ìš° 0ì„ ì„ íƒí•˜ì„¸ìš”.)");
 			System.out.println(towns);
 			System.out.print("[0\t, ");
 			for (int i = 1; i < towns.size() - 1; i++) {
@@ -101,12 +101,12 @@ public class PrintUI {
 			int num = scanner.nextInt();
 			if (num == 0) return "all";
 			else if (num < towns.size()) return towns.get(num);
-			else System.out.println("ÇØ´çÇÏÁö ¾Ê½À´Ï´Ù. ¹üÀ§³»ÀÇ ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			else System.out.println("í•´ë‹¹í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë²”ìœ„ë‚´ì˜ ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		}
 	}
 
 	protected void printdistance(String town) {
-		System.out.println("\nÇØ´ç µµ½ÃµéÀÇ °Å¸®¸¦ º¸½Ã°Ú½À´Ï±î?");
+		System.out.println("\ní•´ë‹¹ ë„ì‹œë“¤ì˜ ê±°ë¦¬ë¥¼ ë³´ì‹œê² ìŠµë‹ˆê¹Œ?");
 		System.out.println("Please in put 1 or 0 => yes = 1, no = 0");
 
 		while (true) {

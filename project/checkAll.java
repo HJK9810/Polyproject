@@ -21,20 +21,20 @@ public class checkAll {
 
 		System.out.println("If print worst, do you want to delet 0.0?(Yes input > 0, No input <= 0)");
 		int num = scanner.nextInt();
-		System.out.println("\nÀüÃ¼¿¡¼­ÀÇ À¯µ¿ÀÎ±¸");
+		System.out.println("\nì „ì²´ì—ì„œì˜ ìœ ë™ì¸êµ¬");
 		System.out.println("Top 10");
 		for (int i = 0; i < 10; i++) {
 			int listsize = townlist.size() - 1;
 			String[] ary = townlist.get(listsize - i).split("-");
-			System.out.println((i + 1) + ". \'" + ary[0] + "\' ¿¡¼­ \'" + ary[1] + "\' : " + ary[2]);
-			cA.top10.add(ary[0] + "¿¡¼­ " + ary[1] + " °Å¸®");
+			System.out.println((i + 1) + ". \'" + ary[0] + "\' ì—ì„œ \'" + ary[1] + "\' : " + ary[2]);
+			cA.top10.add(ary[0] + "ì—ì„œ " + ary[1] + " ê±°ë¦¬");
 		}
 
 		System.out.println("\nWorts 10");
 		if (num <= 0) {
 			for (int i = 0; i < 10; i++) {
 				String[] ary = townlist.get(i).split("-");
-				System.out.println((i + 1) + ". \'" + ary[0] + "\' ¿¡¼­ \'" + ary[1] + "\' : " + ary[2]);
+				System.out.println((i + 1) + ". \'" + ary[0] + "\' ì—ì„œ \'" + ary[1] + "\' : " + ary[2]);
 			}
 		} else {
 			int j = 0;
@@ -42,12 +42,12 @@ public class checkAll {
 			for (int i = 0; i < 10 + j; i++) {
 				String[] ary = townlist.get(i + j).split("-");
 				if (ary[2].equals("0.0")) {
-					zeros.add("\'" + ary[0] + "\' ¿¡¼­ \'" + ary[1] + "\'");
+					zeros.add("\'" + ary[0] + "\' ì—ì„œ \'" + ary[1] + "\'");
 					j++;
 				} else {
 					if (i == townlist.size() - 1) break;
-					System.out.println((i + 1 - j) + ". \'" + ary[0] + "\' ¿¡¼­ \'" + ary[1] + "\' : " + ary[2]);
-					cA.worst10.add(ary[0] + "¿¡¼­ " + ary[1] + " °Å¸®");
+					System.out.println((i + 1 - j) + ". \'" + ary[0] + "\' ì—ì„œ \'" + ary[1] + "\' : " + ary[2]);
+					cA.worst10.add(ary[0] + "ì—ì„œ " + ary[1] + " ê±°ë¦¬");
 				}
 			}
 			System.out.println("\nThey are \"0.0\" cities : " + zeros.size());
