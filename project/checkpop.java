@@ -26,7 +26,7 @@ public class checkpop {
 			int leng = ary.length;
 			if (leng > 5) leng = 5;
 
-			System.out.println(town + "ì—ì„œì˜ ìœ ë™ì¸êµ¬ top5ì™€ worst5");
+			System.out.println(town + "¿¡¼­ÀÇ À¯µ¿ÀÎ±¸ top5¿Í worst5");
 			System.out.println("Top\t\t\t\tworst");
 
 			for (int i = 0; i < leng; i++) {
@@ -34,8 +34,8 @@ public class checkpop {
 				String[] minarr = ary[i].split("-");
 				System.out.println((i + 1) + ". " + maxarr[0] + " : " + maxarr[1] + "\t " + (i + 1) + ". " + minarr[0] + " : " + minarr[1]);
 
-				top5.add(bigtown + " " + town + "ì—ì„œ " + maxarr[0] + " ê±°ë¦¬");
-				worst5.add(bigtown + " " + town + "ì—ì„œ " + minarr[0] + " ê±°ë¦¬");
+				top5.add(bigtown + " " + town + " " + maxarr[0] + " °Å¸®");
+				worst5.add(bigtown + " " + town + " " + minarr[0] + " °Å¸®");
 			}
 		} else {
 			checkAll cA = new checkAll();
