@@ -25,7 +25,8 @@ public class Crawldist {
 		String DRIVER_PATH = "C:\\Crawling\\chromedriver.exe";
 
 		System.setProperty(DRIVER_ID, DRIVER_PATH);
-		ChromeOptions chromeOptions = new ChromeOptions();
+		// for not open chrome when crawling
+		ChromeOptions chromeOptions = new ChromeOptions(); // set option
 		chromeOptions.addArguments("--headless");
 		chromeOptions.addArguments("--no-sandbox");
 		WebDriver driver = new ChromeDriver(chromeOptions);
@@ -50,7 +51,7 @@ public class Crawldist {
 			System.out.println("\nPrint worsts' distances list");
 			cd.findDistance(worst, town, driver);
 			
-			driver.quit();
+			driver.quit(); // end page
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,14 +65,14 @@ public class Crawldist {
 			
 			WebElement web1 = driver
 					.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input"));
-			web1.sendKeys(search);
+			web1.sendKeys(search); // input search
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			web1.sendKeys(Keys.ENTER);
+			web1.sendKeys(Keys.ENTER); // enter for search
 
 			try {
 				Thread.sleep(300);
@@ -80,8 +81,8 @@ public class Crawldist {
 			}
 			// bring distance text
 			String distance = driver.findElement(By.xpath("/html/body/div[7]/div/div[10]/div/div[2]/div[2]/div/div/div[1]/div/div/div[1]/div/div[1]")).getText();
-			System.out.println(search + " : " + distance);
-			
+			System.out.println(search + " : " + distance); // pick data
+			// for go to main page
 			driver.findElement(By.xpath("/html/body/div[4]/div[2]/form/div[1]/div[1]/div[1]/a/img")).click();
 		}
 	}
