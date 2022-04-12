@@ -59,8 +59,9 @@ int main() {
 	return50 = newChange / 50;
 	newChange -= return50 * 50;
 	return10 = newChange / 10;
+	
 	printf("환전결과\n");
-	printf("%d 원 -> %d %s\n", inputWon, finalOutput, units[input - 1]); // 환전 출력 
+	printf("%d 원 -> %d %s\n", inputWon, finalOutput, UNIT[input - 1]); // 환전 출력 
 	printf("거스름돈 : %d 원\n\n", change / 10 * 10); // 거스름돈 출력
 	printf("1000원 %d개. 500원 %d개. 100원 %d개. 50원 %d개. 10원 %d개.", return1000, return500, return100, return50, return10);
 	
