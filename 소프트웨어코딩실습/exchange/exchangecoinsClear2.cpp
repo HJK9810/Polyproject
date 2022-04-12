@@ -1,13 +1,24 @@
 #include <stdio.h>
 
+void changeCoins(int money) {
+	const int counts[5] = {1000, 500, 100, 50, 10};
+	
+	for(int i = 0; i < 5; i++) {
+		int coin = money / counts[i];
+		money -= coin * counts[i];
+		
+		if(coin != 0) printf("%d원: %d 개. ", counts[i], coin);
+	}
+	
+	printf("\n");
+}
+
 int main() {
 	int inputWon = 0;
 	int input = 0;
 		
 	const float RATE[] = {1233.1, 9.87, 1342.79, 193.25, 1605.28};
 	const char UNIT[][10] = {"달러", "엔", "유로", "위안", "파운드"};
-	const int counts[5] = {1000, 500, 100, 50, 10};
-	int coins[5] = {0, 0, 0, 0, 0};
 	
 	printf("환전을 원하는 금액을 입력하세요(원화) : ");
 	scanf("%d", &inputWon);
@@ -21,23 +32,13 @@ int main() {
 	
 	float output = inputWon / rate; // 환전 = 바꾸는 원화 / 환율
 	int change = (int) (output * 100) % 100 * rate / 100; // 거스름돈
-	int newChange = change;
-	
-	for(int i = 0; i < 5; i++) {
-		coins[i] = newChange / counts[i];
-		newChange -= coins[i] * counts[i];
-	}
 	
 	printf("기준 환율 : %.2f\n\n", rate); // 모든 환율이 소수점 둘째짜리까지기에 .2f 사용 
 	printf("환전결과\n");
-	printf("%d 원 -> %d %s\n", inputWon, (int) finalOutput, UNIT[input - 1]); // 환전 출력 
+	printf("%d 원 -> %d %s\n", inputWon, (int) output, UNIT[input - 1]); // 환전 출력 
 	printf("거스름돈 : %d 원\n", change / 10 * 10); // 거스름돈 출력 - 1원단위 버림 
 	printf("1원단위시 거스름돈 : %d 원\n\n", change); // 거스름돈 출력 - 1원단위까지 출력 
-	
-	for(int i = 0; i < 5; i++) {
-		if(coins[i] != 0) printf("%d원: %d 개. ", counts[i], coins[i]);
-	}
-	printf("\n");
+	changeCoins(change);
 	
 	return 0;
 }
