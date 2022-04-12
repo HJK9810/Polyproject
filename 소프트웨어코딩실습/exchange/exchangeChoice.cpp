@@ -16,7 +16,6 @@ int main() {
 	int return10;
 	int newChange = 0; // 동전계산을 위한 거스름돈
 	float rate = 0.0;
-	const char UNIT[][10] = {"달러", "엔", "유로", "위안", "파운드"};
 	
 	printf("환전을 원하는 금액을 입력하세요(원화) : ");
 	scanf("%d", &inputWon);
@@ -61,7 +60,27 @@ int main() {
 	return10 = newChange / 10;
 	
 	printf("환전결과\n");
-	printf("%d 원 -> %d %s\n", inputWon, finalOutput, UNIT[input - 1]); // 환전 출력 
+	
+	switch(input) {
+		case 1: // USD
+			printf("%d 원 -> %d 달러\n", inputWon, finalOutput); // 환전 출력
+			break;
+		case 2: // JPY
+			printf("%d 원 -> %d 엔\n", inputWon, finalOutput); // 환전 출력
+			break;
+		case 3: // EUR
+			printf("%d 원 -> %d 유로\n", inputWon, finalOutput); // 환전 출력
+			break;
+		case 4: // CNY
+			printf("%d 원 -> %d 위안\n", inputWon, finalOutput); // 환전 출력 
+			break;
+		case 5: // GBP
+			printf("%d 원 -> %d 파운드\n", inputWon, finalOutput); // 환전 출력
+			break;
+		default:
+			break;
+	}
+
 	printf("거스름돈 : %d 원\n\n", change / 10 * 10); // 거스름돈 출력
 	printf("1000원 %d개. 500원 %d개. 100원 %d개. 50원 %d개. 10원 %d개.", return1000, return500, return100, return50, return10);
 	
