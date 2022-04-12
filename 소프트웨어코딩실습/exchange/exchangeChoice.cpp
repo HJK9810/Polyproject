@@ -1,5 +1,24 @@
 #include <stdio.h>
 
+int calExchange(float rate, int inputWon) {
+	float output = inputWon / rate; // 환전 = 바꾸는 원화 / 환율
+	return (int) (output * 100) % 100 * rate / 100; // 거스름돈
+}
+
+void changCoins(int money) {
+	int return1000 = money / 1000;
+	money -= return1000 * 1000;
+	int return500 = money / 500;
+	money -= return500 * 500;
+	int return100 = money / 100;
+	money -= return100 * 100;
+	int return50 = money / 50;
+	money -= return50 * 50;
+	int return10 = money / 10;
+	
+	printf("1000원 %d개. 500원 %d개. 100원 %d개. 50원 %d개. 10원 %d개.", return1000, return500, return100, return50, return10);
+}
+
 int main() {
 	const float RATE_USD = 1233.1;
 	const float RATE_JPY = 9.87;
@@ -8,14 +27,8 @@ int main() {
 	const float RATE_GBP = 1605.28;
 	int inputWon = 0; // 원화 
 	int change  = 0; // 거스름돈 
-	int input = 0; // 원하는 외화 선택용 
-	int return1000;
-	int return500;
-	int return100;
-	int return50;
-	int return10;
-	int newChange = 0; // 동전계산을 위한 거스름돈
-	float rate = 0.0;
+	int input = 0; // 원하는 외화 선택용
+	float output = 0.0;
 	
 	printf("환전을 원하는 금액을 입력하세요(원화) : ");
 	scanf("%d", &inputWon);
@@ -26,42 +39,32 @@ int main() {
 	
 	switch(input) {
 		case 1: // USD
-			rate = RATE_USD;
+			output = inputWon / RATE_USD;
+			change = calExchange(RATE_USD, inputWon);
 			break;
 		case 2: // JPY
-			rate = RATE_JPY;
+			output = inputWon / RATE_JPY;
+			change = calExchange(RATE_JPY, inputWon);
 			break;
 		case 3: // EUR
-			rate = RATE_EUR;
+			output = inputWon / RATE_EUR;
+			change = calExchange(RATE_EUR, inputWon);
 			break;
 		case 4: // CNY
-			rate = RATE_CNY; 
+			output = inputWon / RATE_CNY;
+			change = calExchange(RATE_CNY, inputWon);
 			break;
 		case 5: // GBP
-			rate = RATE_GBP;
+			output = inputWon / RATE_GBP;
+			change = calExchange(RATE_GBP, inputWon);
 			break;
 		default:
 			break;
 	}
 	
-	float output = inputWon / rate; // 환전 = 바꾸는 원화 / 환율
-	int finalOutput = output; 
-	change = (int) (output * 100) % 100 * rate / 100; // 거스름돈
-	
-	newChange = change;
-	return1000 = newChange / 1000;
-	newChange -= return1000 * 1000;
-	return500 = newChange / 500;
-	newChange -= return500 * 500;
-	return100 = newChange / 100;
-	newChange -= return100 * 100;
-	return50 = newChange / 50;
-	newChange -= return50 * 50;
-	return10 = newChange / 10;
-	
 	// 출력 
 	printf("환전결과\n");
-	printf("%d 원 -> %d ", inputWon, finalOutput); // 환전 출력
+	printf("%d 원 -> %d ", inputWon, (int) output); // 환전 출력
 	
 	switch(input) {
 		case 1: // USD
@@ -84,7 +87,7 @@ int main() {
 	}
 
 	printf("거스름돈 : %d 원\n\n", change / 10 * 10); // 거스름돈 출력
-	printf("1000원 %d개. 500원 %d개. 100원 %d개. 50원 %d개. 10원 %d개.", return1000, return500, return100, return50, return10);
+	changCoins(change);
 	
 	return 0;
 }
