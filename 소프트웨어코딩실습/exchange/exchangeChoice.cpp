@@ -59,23 +59,25 @@ int main() {
 	newChange -= return50 * 50;
 	return10 = newChange / 10;
 	
+	// 출력 
 	printf("환전결과\n");
+	printf("%d 원 -> %d ", inputWon, finalOutput); // 환전 출력
 	
 	switch(input) {
 		case 1: // USD
-			printf("%d 원 -> %d 달러\n", inputWon, finalOutput); // 환전 출력
+			printf("달러\n");
 			break;
 		case 2: // JPY
-			printf("%d 원 -> %d 엔\n", inputWon, finalOutput); // 환전 출력
+			printf("엔\n");
 			break;
 		case 3: // EUR
-			printf("%d 원 -> %d 유로\n", inputWon, finalOutput); // 환전 출력
+			printf("유로\n");
 			break;
 		case 4: // CNY
-			printf("%d 원 -> %d 위안\n", inputWon, finalOutput); // 환전 출력 
+			printf("위안\n");
 			break;
 		case 5: // GBP
-			printf("%d 원 -> %d 파운드\n", inputWon, finalOutput); // 환전 출력
+			printf("파운드\n");
 			break;
 		default:
 			break;
