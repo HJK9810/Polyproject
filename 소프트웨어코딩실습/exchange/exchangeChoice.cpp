@@ -26,45 +26,40 @@ int main() {
 	const float RATE_CNY = 193.25;
 	const float RATE_GBP = 1605.28;
 	int inputWon = 0; // 원화 
-	int change  = 0; // 거스름돈 
 	int input = 0; // 원하는 외화 선택용
-	float output = 0.0;
+	float rate = 0.0;
 	
 	printf("환전을 원하는 금액을 입력하세요(원화) : ");
 	scanf("%d", &inputWon);
-	printf("\n");
 	printf("환전할 외화를 선택하세요 (1:USD, 2:JPY, 3:EUR, 4:CNY, 5:GBP) : ");
 	scanf("%d", &input);
 	printf("\n");
 	
 	switch(input) {
 		case 1: // USD
-			output = inputWon / RATE_USD;
-			change = calExchange(RATE_USD, inputWon);
+			rate = RATE_USD;
 			break;
 		case 2: // JPY
-			output = inputWon / RATE_JPY;
-			change = calExchange(RATE_JPY, inputWon);
+			rate = RATE_JPY;
 			break;
 		case 3: // EUR
-			output = inputWon / RATE_EUR;
-			change = calExchange(RATE_EUR, inputWon);
+			rate = RATE_EUR;
 			break;
 		case 4: // CNY
-			output = inputWon / RATE_CNY;
-			change = calExchange(RATE_CNY, inputWon);
+			rate = RATE_CNY; 
 			break;
 		case 5: // GBP
-			output = inputWon / RATE_GBP;
-			change = calExchange(RATE_GBP, inputWon);
+			rate = RATE_GBP;
 			break;
 		default:
 			break;
 	}
 	
+	int change = calExchange(rate, inputWon);
+	
 	// 출력 
 	printf("환전결과\n");
-	printf("%d 원 -> %d ", inputWon, (int) output); // 환전 출력
+	printf("%d 원 -> %d ", inputWon, (int) (inputWon / rate)); // 환전 출력
 	
 	switch(input) {
 		case 1: // USD
