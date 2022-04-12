@@ -7,7 +7,7 @@ void changeCoins(int money) {
 	for(int i = 0; i < 5; i++) {
 		int coin = money / counts[i];
 		money -= coin * counts[i];
-		
+		// 지불되는 종류만 출력 
 		if(coin != 0) printf("%d원: %d 개. ", counts[i], coin);
 	}
 	
@@ -24,7 +24,7 @@ void changeExchan(int money, char unit[], int input) {
 		
 		int coin = money / counts[i];
 		money -= coin * counts[i];
-		
+		// 지불되는 종류만 출력 
 		if(coin != 0) printf("%d%s: %d 개. ", counts[i], unit, coin);
 	}
 	
@@ -55,13 +55,13 @@ int main() {
 	printf("환전결과\n");
 	printf("%d 원 -> %d %s\n", inputWon, (int) output, UNIT[input - 1]); // 환전 출력
 	char unit[10];
-	strcpy(unit, UNIT[input - 1]);
+	strcpy(unit, UNIT[input - 1]); // 단위를 전달하기 위한 재정의 
 	
-	changeExchan((int) output, unit, input);
+	changeExchan((int) output, unit, input); // 외화 지불 종류 
 	
 	printf("거스름돈 : %d 원\n", change / 10 * 10); // 거스름돈 출력 - 1원단위 버림 
 	printf("1원단위시 거스름돈 : %d 원\n", change); // 거스름돈 출력 - 1원단위까지 출력 
-	changeCoins(change);
+	changeCoins(change); // 거스름돈 지불 종류 
 	
 	return 0;
 }
