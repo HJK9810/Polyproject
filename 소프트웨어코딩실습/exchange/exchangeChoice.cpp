@@ -28,6 +28,7 @@ void changeExchan(int money, char unit[], int input) { // 환전값, 해당 외화의 단
 	int return20; // 엔화만 존재하지 않음 
 	int return10;
 	int return5;
+	int return2;
 	
 	if(input == 2) { // 엔화만 500엔권 이상이 존재 
 		return5000 = money / 5000;
@@ -54,7 +55,12 @@ void changeExchan(int money, char unit[], int input) { // 환전값, 해당 외화의 단
 	return10 = money / 10;
 	money -= return10 * 10;
 	return5 = money / 5;
-	money -= return5 * 5; // 남은 money = 단위가 1인 외화 지불수량 
+	money -= return5 * 5; // 남은 money = 단위가 1인 외화 지불수량
+	
+	if(input == 3 || input == 5) { // 유로, 파운드만 2 짜리 존재
+		return2 = money / 2;
+		money -= return2 * 2; // 2짜리 추가 
+	}
 	
 	// pirnt 영역 
 	if(input == 2) { // 엔화만 존재 
@@ -75,6 +81,11 @@ void changeExchan(int money, char unit[], int input) { // 환전값, 해당 외화의 단
 	
 	printf("10%s %d개. ", unit, return10);
 	printf("5%s %d개. ", unit, return5);
+	
+	if(input == 3 || input == 5) { // 유로, 파운드만 2 짜리 존재 
+		printf("2%s %d개. ", unit, return2);
+	}
+	
 	printf("1%s %d개. ", unit, money);
 	
 	printf("\n");

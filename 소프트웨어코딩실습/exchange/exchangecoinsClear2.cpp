@@ -15,12 +15,13 @@ void changeCoins(int money) {
 }
 
 void changeExchan(int money, char unit[], int input) {
-	const int counts[9] = {5000, 1000, 500, 100, 50, 20, 10, 5, 1};
+	const int counts[10] = {5000, 1000, 500, 100, 50, 20, 10, 5, 2, 1};
 	
-	for(int i = 0; i < 9; i++) {
+	for(int i = 0; i < 10; i++) {
 		if(input != 2 && i < 3) continue; // 엔화만 5000, 1000, 500엔 존재 
 		if(input == 5 && i == 3) continue; // 파운드는 100파운드 이상 존재X 
-		if(input != 2) continue; // 엔화만 20엔 없음 
+		if(input != 2 && i == 5) continue; // 엔화만 20엔 없음
+		if(input != 3 && input != 5 && i == 8) continue;
 		
 		int coin = money / counts[i];
 		money -= coin * counts[i];
