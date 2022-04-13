@@ -27,6 +27,7 @@ int main() {
 	int month = 1;	// 컴퓨터 기본 월 
 	
 	while(true) { // 무한루프 
+		int dates[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // idx = 각 달 => 윤년기준, 1년 모든달 날짜수 
 		printf("  년도 입력(1900년대 이후만 가능합니다. 0은 종료입니다.) : ");
 		scanf("%d", &year);
 		
@@ -50,33 +51,16 @@ int main() {
 			// 윤년 = 1년 366일, 평년 = 1년 365일 
 			if (checkY % 4 == 0 && checkY % 100 != 0) yearSum += 366;
 			else if(checkY % 400 == 0) yearSum += 366;
-			else yearSum += 365;
+			else {
+				yearSum += 365;
+				dates[2] = 28;
+			}
 		}
 		
-		int date = 30;
+		int date = dates[month];
 		int dateSum = 0;
-		for(int idx = 1; idx < month + 1; idx++) {
-			switch(idx) { // 해당 달 마지막날 구하기 
-				case 1:
-				case 3:
-				case 5:
-				case 7:
-				case 8:
-				case 10:
-				case 12:
-					date = 31;
-					break;
-				case 2:
-					if (year % 4 == 0 && year % 100 != 0) date = 29;
-					else if(year % 400 == 0) date = 29;
-					else date = 28;
-					break;
-				default:
-					date = 30;
-					break;
-			}
-			// 입력한 월은 몇일이 지났는지 더할필요 없음 
-			if(idx != month) dateSum += date;		
+		for(int idx = 1; idx < month; idx++) {
+			dateSum += dates[idx];
 		}
 		
 		// yearsum = 1900년을 기준으로 입력 년도까지 촣 몇일이 지났는지 계산 
