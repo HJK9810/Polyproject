@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void print(int day, int date) {
-	int line = 0;
+void print(int day, int date) { // 출력 
+	int line = 0; // 요일체크를 위한 변수선언 
 	
-	for(int idx = 1; idx < date + 1; idx++) {
+	for(int idx = 1; idx < date + 1; idx++) { // 1에서 시작하며 마지막 날짜까지 출력 
 		if(idx == 1 && line < day) { // 해당 요일이 첫 요일과 동일하지 않을때 
-			printf("\t");
+			printf("\t"); // 공백용 빈칸. \t == %8s 
 			idx -= 1; // 빈 값은 빈 상태로 만들어야 함 
 		} else {
 			printf("%4d%4s", idx, " "); // UI를 좋게 출력 - 앞의 빈칸 + 숫자 + 빈칸 4칸 
@@ -85,13 +85,8 @@ int main() {
 		printf("===================== %d년 %d월 =======================\n", year, month);
 		// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
 		printf("%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s\n", "일", " ", "월", " ", "화", " ", "수", " ", "목", " ", "금", " ", "토");
-		print(day, date);
+		print(day, date); // 출력을 위한 함수 
 	}
 
-	
-	
-	
-	
-	
 	return 0;
 }
