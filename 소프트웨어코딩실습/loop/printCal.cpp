@@ -26,17 +26,16 @@ int main() {
 	int month = 1;	// 컴퓨터 기본 월 
 	
 	while(true) { // 무한루프 
-		do {
-			printf("  년도 입력(1900년대 이후만 가능합니다.) : ");
-			scanf("%d", &year);
-		} while (year < 1900);
+		printf("  년도 입력(1900년대 이후만 가능합니다. 0은 종료입니다.) : ");
+		scanf("%d", &year);
 		
 		if(year == 0) break; // 년도가 0일경우, 무한루프 종료 
+		else if(year < 1900) continue; // 범위 이내일경우, 재입력 
 		
-		do {
-			printf("  월 입력(1 ~ 12사이만 입력 가능합니다.) : ");
-			scanf("%d", &month);
-		} while (month < 1 || month > 13);
+		printf("  월 입력(1 ~ 12사이만 입력 가능합니다.) : ");
+		scanf("%d", &month);
+		
+		if (month < 1 || month > 13) continue; // 범위 이내일경우, 재입력 
 		
 		printf("\n\n");	
 		
