@@ -1,5 +1,52 @@
 #include <stdio.h>
 
+int calcul(int year, int month) {
+	int count = year - 1900; // 1900년대 이후만 가능한 계산 
+	int yearSum = 0; 
+		
+	for(int idx = 0; idx < count; idx++) { 
+		int checkY = 1900 + idx; // 윤년을 알아보기 위한 세팅 
+			
+		// 윤년의 조건 : 4의 배수이자 100의 배수가 아닐때 or 400의 배수일때
+		// 윤년 = 1년 366일, 평년 = 1년 365일 
+		if (checkY % 4 == 0 && checkY % 100 != 0) yearSum += 366;
+		else if(checkY % 400 == 0) yearSum += 366;
+		else yearSum += 365;
+	}
+		
+	int date = 30;
+	int dateSum = 0;
+	for(int idx = 1; idx < month + 1; idx++) {
+		switch(idx) { // 해당 달 마지막날 구하기 
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				date = 31;
+				break;
+			case 2:
+				if (year % 4 == 0 && year % 100 != 0) date = 29;
+				else if(year % 400 == 0) date = 29;
+				else date = 28;
+				break;
+			default:
+				date = 30;
+				break;
+		}
+		// 입력한 월은 몇일이 지났는지 더할필요 없음 
+		if(idx != month) dateSum += date;		
+	}
+		
+	// yearsum = 1900년을 기준으로 입력 년도까지 촣 몇일이 지났는지 계산 
+	// dateSum = 1월을 기준으로 입력 달 까지 총 몇일이 지났는지 계산 
+	int day =  (yearSum + dateSum + 1) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
+	
+	return dates * 10 + day;
+}
+
 void print(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
 	int today = 1; // for 날짜
 	
@@ -42,51 +89,10 @@ int main() {
 		
 		printf("\n\n");	
 		
-		int count = year - 1900; // 1900년대 이후만 가능한 계산 
-		int yearSum = 0; 
-		
-		for(int idx = 0; idx < count; idx++) { 
-			int checkY = 1900 + idx; // 윤년을 알아보기 위한 세팅 
-			
-			// 윤년의 조건 : 4의 배수이자 100의 배수가 아닐때 or 400의 배수일때
-			// 윤년 = 1년 366일, 평년 = 1년 365일 
-			if (checkY % 4 == 0 && checkY % 100 != 0) yearSum += 366;
-			else if(checkY % 400 == 0) yearSum += 366;
-			else yearSum += 365;
-		}
-		
-		int date = 30;
-		int dateSum = 0;
-		for(int idx = 1; idx < month + 1; idx++) {
-			switch(idx) { // 해당 달 마지막날 구하기 
-				case 1:
-				case 3:
-				case 5:
-				case 7:
-				case 8:
-				case 10:
-				case 12:
-					date = 31;
-					break;
-				case 2:
-					if (year % 4 == 0 && year % 100 != 0) date = 29;
-					else if(year % 400 == 0) date = 29;
-					else date = 28;
-					break;
-				default:
-					date = 30;
-					break;
-			}
-			// 입력한 월은 몇일이 지났는지 더할필요 없음 
-			if(idx != month) dateSum += date;		
-		}
-		
-		// yearsum = 1900년을 기준으로 입력 년도까지 촣 몇일이 지났는지 계산 
-		// dateSum = 1월을 기준으로 입력 달 까지 총 몇일이 지났는지 계산 
-		int day =  (yearSum + dateSum + 1) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
+		int days =  calcul(year, month); // days = 마지막날 * 10 + 요일(0~6) 
 
 		printf("===================== %d년 %d월 =======================\n", year, month);
-		print(day, date); // 출력을 위한 함수 
+		print(days % 10, days / 10); // 출력을 위한 함수 
 	}
 
 	return 0;
