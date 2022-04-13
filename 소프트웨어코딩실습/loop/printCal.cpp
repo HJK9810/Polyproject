@@ -40,16 +40,16 @@ int main() {
 		printf("\n\n");	
 		
 		int count = year - 1900; // 1900년대 이후만 가능한 계산 
-		int leap = 0; // 윤년수 
-		int common = 0; // 평년수 
+		int yearSum = 0; 
 		
 		for(int idx = 0; idx < count; idx++) { 
 			int checkY = 1900 + idx; // 윤년을 알아보기 위한 세팅 
 			
-			// 윤년의 조건 : 4의 배수이자 100의 배수가 아닐때 or 400의 배수일때 
-			if (checkY % 4 == 0 && checkY % 100 != 0) leap++;
-			else if(checkY % 400 == 0) leap++;
-			else common++;
+			// 윤년의 조건 : 4의 배수이자 100의 배수가 아닐때 or 400의 배수일때
+			// 윤년 = 1년 366일, 평년 = 1년 365일 
+			if (checkY % 4 == 0 && checkY % 100 != 0) yearSum += 366;
+			else if(checkY % 400 == 0) yearSum += 366;
+			else yearSum += 365;
 		}
 		
 		int date = 30;
@@ -74,13 +74,13 @@ int main() {
 					date = 30;
 					break;
 			}
-			dateSum += date;		
+			// 입력한 월은 몇일이 지났는지 더할필요 없음 
+			if(idx != month) dateSum += date;		
 		}
 		
-		// 윤년은 전년보다 요일이 이틀 차이나지만, 평년은 하루 차이남 
-		// 앞의 괄호 == 년도 첫요일 => 1900년 1월 == 월요일 == 1
-		// 뒤의 괄호 == 해당 달 첫 요일 
-		int day =  ((leap * 2 + common + 1) + (dateSum - date)) % 7;
+		// yearsum = 1900년을 기준으로 입력 년도까지 촣 몇일이 지났는지 계산 
+		// dateSum = 1월을 기준으로 입력 달 까지 총 몇일이 지났는지 계산 
+		int day =  (yearSum + dateSum) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
 
 		printf("===================== %d년 %d월 =======================\n", year, month);
 		// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
