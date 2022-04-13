@@ -1,21 +1,22 @@
 #include <stdio.h>
 
-void print(int day, int date) { // 출력 
-	int line = 0; // 요일체크를 위한 변수선언 
-	
-	for(int idx = 1; idx < date + 1; idx++) { // 1에서 시작하며 마지막 날짜까지 출력 
-		if(idx == 1 && line < day) { // 해당 요일이 첫 요일과 동일하지 않을때 
-			printf("\t"); // 공백용 빈칸. \t == %8s 
-			idx -= 1; // 빈 값은 빈 상태로 만들어야 함 
-		} else {
-			printf("%4d%4s", idx, " "); // UI를 좋게 출력 - 앞의 빈칸 + 숫자 + 빈칸 4칸 
-		} 
-		line++; // 요일이 지난상태 
-		
-		if(line == 7) { // 마지막요일에 도달 
-			printf("\n"); // 줄바꿈 
-			line = 0; // 초기화 
+void print(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
+	int today = 1; // for 날짜
+
+	for(int idx = 0; idx < 5; idx++) { // 한달 == 5주 출력 
+		for(int jdx = 0; jdx < 7; jdx++) { // 1주일 출력 
+			if(idx == 0 && jdx < day) printf("\t");
+			else { // \t == %8s == %8d 
+				printf("%4d%4s", today, " ");
+				today++; // 날짜 추가 
+			}
+			
+			if(today > date) { // 지정 날자를 모두 출력했을때 
+				idx++; // 만약, 해당 일이 넷째주에 끝났을경우 -> idx를 5로 만들어 for문 탈출 
+				break; // 내부 for문 종료 
+			}
 		}
+		printf("\n"); // 해당 주가 끝났기에 줄바꿈 
 	}
 	
 	printf("\n\n"); // 달력출력 완료후, 다음 새 달력을 위한 빈칸띄우기 2줄 
@@ -80,7 +81,7 @@ int main() {
 		
 		// yearsum = 1900년을 기준으로 입력 년도까지 촣 몇일이 지났는지 계산 
 		// dateSum = 1월을 기준으로 입력 달 까지 총 몇일이 지났는지 계산 
-		int day =  (yearSum + dateSum) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
+		int day =  (yearSum + dateSum + 1) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
 
 		printf("===================== %d년 %d월 =======================\n", year, month);
 		// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
