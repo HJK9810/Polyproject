@@ -21,7 +21,7 @@ void changeExchan(int money, char unit[], int input) {
 		if(input != 2 && i < 3) continue; // 엔화만 5000, 1000, 500엔 존재 
 		if(input == 5 && i == 3) continue; // 파운드는 100파운드 이상 존재X 
 		if(input != 2 && i == 5) continue; // 엔화만 20엔 없음
-		if(input != 3 && input != 5 && i == 8) continue;
+		if(input != 3 && input != 5 && i == 8) continue; // 유로, 파운드만 2 짜리 존재
 		
 		int coin = money / counts[i];
 		money -= coin * counts[i];
