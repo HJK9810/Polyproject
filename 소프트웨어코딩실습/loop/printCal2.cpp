@@ -42,7 +42,7 @@ int main() {
 		printf("\n\n");	
 		
 		int count = year - 1900; // 1900년대 이후만 가능한 계산 
-		int yearSum = 0; 
+		int yearSum = 0; // 입력 전년도까지 지난 총 날짜수 합 
 		
 		for(int idx = 0; idx < count; idx++) { 
 			int checkY = 1900 + idx; // 윤년을 알아보기 위한 세팅 
@@ -53,11 +53,10 @@ int main() {
 			else if(checkY % 400 == 0) yearSum += 366;
 			else {
 				yearSum += 365;
-				dates[2] = 28;
+				dates[2] = 28; // 배열 초기화가 윤년기준이기에 
 			}
 		}
 		
-		int date = dates[month];
 		int dateSum = 0;
 		for(int idx = 1; idx < month; idx++) {
 			dateSum += dates[idx];
@@ -70,7 +69,7 @@ int main() {
 		printf("===================== %d년 %d월 =======================\n", year, month);
 		// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
 		printf("%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s\n", "일", " ", "월", " ", "화", " ", "수", " ", "목", " ", "금", " ", "토");
-		print(day, date); // 출력을 위한 함수 
+		print(day, dates[month]); // 출력을 위한 함수 - 요일, 해당달 마지막날 
 	}
 
 	return 0;
