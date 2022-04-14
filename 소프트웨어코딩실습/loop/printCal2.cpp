@@ -27,9 +27,12 @@ int calcul(int year, int month) {
 	return dates[month] * 10 + day; // days = 마지막날 * 10 + 요일(0~6) 
 }
 
-void printUI(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
+void printUI(int year, int month, int days) { 
 	int today = 1; // for 날짜
+	int date = days / 10; // 출력 - day : 요일, date : 마지막날짜 
+	int day = days % 10;
 	
+	printf("===================== %d년 %d월 =======================\n", year, month);
 	// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
 	printf("%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s%4s\n", "일", " ", "월", " ", "화", " ", "수", " ", "목", " ", "금", " ", "토");
 	for(int idx = 0; idx < 5; idx++) { // 한달 == 5주 출력 
@@ -69,9 +72,7 @@ int main() {
 		
 		printf("\n\n");	
 		int days = calcul(year, month); // days = 마지막날 * 10 + 요일(0~6)
-		
-		printf("===================== %d년 %d월 =======================\n", year, month);
-		printUI(days % 10, days / 10); // 출력을 위한 함수 - 요일, 해당달 마지막날 
+		printUI(year, month, days); // 출력을 위한 함수
 	}
 
 	return 0;
