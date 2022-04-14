@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void print(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
+void printUI(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
 	int today = 1; // for 날짜
 	
 	// UI - 앞의 %4s는 요일, 뒤의 %4s는 줄맞춤을 위한 공백 => 토요일은 공백대신, 줄바꿈을 입력 
@@ -69,7 +69,7 @@ int main() {
 		int day =  (yearSum + dateSum + 1) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
 
 		printf("===================== %d년 %d월 =======================\n", year, month);
-		print(day, dates[month]); // 출력을 위한 함수 - 요일, 해당달 마지막날 
+		printUI(day, dates[month]); // 출력을 위한 함수 - 요일, 해당달 마지막날 
 	}
 
 	return 0;
