@@ -44,7 +44,7 @@ int calcul(int year, int month) {
 	// dateSum = 1월을 기준으로 입력 달 까지 총 몇일이 지났는지 계산 
 	int day =  (yearSum + dateSum + 1) % 7; // 요일 계산 = 1주일은 7일 => 0 = 일, 1 = 월.... 
 	
-	return dates * 10 + day;
+	return date * 10 + day;
 }
 
 void printUI(int day, int date) { // 출력 - day : 요일, date : 마지막날짜 
